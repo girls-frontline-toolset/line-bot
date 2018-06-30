@@ -155,12 +155,19 @@ foreach ($line->getEvent() as $event) {
                         $list = file_get_contents("text.json");
                         $roleList = json_decode(file_get_contents("text.json"));
                         foreach ($roleList->role as $role) {
-                            if (!(stripos($event['message']['text'], $role->role) === FALSE)) {
-                                $line->sendText($event, $role->text);
+
+                            if(is_array($role->role)){
+                                foreach ($role->role as $roleName){
+                                    if (!(stripos($event['message']['text'], $roleName) === FALSE)) {
+                                        $line->sendText($event, $role->text[rand(0,count($role->text))]);
+                                    }
+                                }
+                            }else{
+                                if (!(stripos($event['message']['text'], $role->role) === FALSE)) {
+                                    $line->sendText($event, $role->text[rand(0,count($role->text))]);
+                                }
                             }
-
                         }
-
                     }
                     break;
                 default:
