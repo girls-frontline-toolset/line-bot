@@ -159,12 +159,12 @@ foreach ($line->getEvent() as $event) {
                             if(is_array($role->role)){
                                 foreach ($role->role as $roleName){
                                     if (!(stripos($event['message']['text'], $roleName) === FALSE)) {
-                                        $line->sendText($event, $role->text[rand(0,count($role->text))]);
+                                        $line->sendText($event, $role->text[rand(0,count($role->text) -1 )]);
                                     }
                                 }
                             }else{
                                 if (!(stripos($event['message']['text'], $role->role) === FALSE)) {
-                                    $line->sendText($event, $role->text[rand(0,count($role->text))]);
+                                    $line->sendText($event, $role->text[rand(0,count($role->text) - 1 )]);
                                 }
                             }
                         }
