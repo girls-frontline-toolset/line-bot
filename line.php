@@ -159,12 +159,20 @@ foreach ($line->getEvent() as $event) {
                             if(is_array($role->role)){
                                 foreach ($role->role as $roleName){
                                     if (!(stripos($event['message']['text'], $roleName) === FALSE)) {
-                                        $line->sendText($event, $role->text[rand(0,count($role->text) -1 )]);
+                                        if(isset($role->imgUrl)){
+                                            $line->sendImage($event, "https://www.ntw-20.com/api/line/img/". $role->imgUrl[rand(0,count($role->imgUrl) -1 )]);
+                                        }else{
+                                            $line->sendText($event, $role->text[rand(0,count($role->text) -1 )]);
+                                        }
                                     }
                                 }
                             }else{
                                 if (!(stripos($event['message']['text'], $role->role) === FALSE)) {
-                                    $line->sendText($event, $role->text[rand(0,count($role->text) - 1 )]);
+                                    if(isset($role->imgUrl)){
+                                        $line->sendImage($event, "https://www.ntw-20.com/api/line/img/". $role->imgUrl[rand(0,count($role->imgUrl) -1 )]);
+                                    }else{
+                                        $line->sendText($event, $role->text[rand(0,count($role->text) -1 )]);
+                                    }
                                 }
                             }
                         }
