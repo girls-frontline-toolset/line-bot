@@ -26,8 +26,8 @@
       <file leaf-file-name="text.json" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/text.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="385">
-              <caret line="197" column="6" lean-forward="true" selection-start-line="197" selection-start-column="6" selection-end-line="197" selection-end-column="6" />
+            <state relative-caret-position="674">
+              <caret line="158" column="6" lean-forward="true" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -76,6 +76,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -87,7 +88,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -118,18 +118,19 @@
       <updated>1530438209186</updated>
       <workItem from="1530438210336" duration="2161000" />
       <workItem from="1530465270262" duration="3626000" />
-      <workItem from="1530523059333" duration="2018000" />
+      <workItem from="1530523059333" duration="2804000" />
+      <workItem from="1530540089254" duration="443000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="7805000" />
+    <option name="totallyTimeSpent" value="9034000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.098614074" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.09968017" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32922733" />
@@ -166,6 +167,27 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/line.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="93">
+          <caret line="3" column="31" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lineEvent.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1860">
+          <caret line="60" column="29" selection-start-line="60" selection-start-column="20" selection-end-line="60" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/text.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="6014">
+          <caret line="194" column="5" lean-forward="true" selection-start-line="194" selection-start-column="5" selection-end-line="194" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/line.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="93">
@@ -248,8 +270,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/text.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="385">
-          <caret line="197" column="6" lean-forward="true" selection-start-line="197" selection-start-column="6" selection-end-line="197" selection-end-column="6" />
+        <state relative-caret-position="674">
+          <caret line="158" column="6" lean-forward="true" selection-start-line="158" selection-start-column="6" selection-end-line="158" selection-end-column="6" />
         </state>
       </provider>
     </entry>
