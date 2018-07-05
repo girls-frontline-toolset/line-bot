@@ -202,7 +202,7 @@ foreach ($line->getEvent() as $event) {
                         }
 
                         if ($message[1] == "g") {
-                            $link = 'https://ntw-20.com/common/girl/girl_';
+                            $link = 'https://www.ntw-20.com/common/girl/girl_';
                             $imageList = array(array(), array());
 
                             foreach ($dataJson->data as $dataList) {
@@ -223,7 +223,7 @@ foreach ($line->getEvent() as $event) {
                                 foreach ($imageList[0] as $no) {
                                     array_push($listArray,
                                         array("type" => "image", "originalContentUrl" => $link . $no . ".jpg",
-                                            "previewImageUrl" => $link . $no . ".jpg")
+                                            "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=$no&type=g")
                                     );
                                 }
                             }
@@ -237,7 +237,7 @@ foreach ($line->getEvent() as $event) {
                                 foreach ($imageList[1] as $no) {
                                     array_push($listArray,
                                         array("type" => "image", "originalContentUrl" => $link . $no . ".jpg",
-                                            "previewImageUrl" => $link . $no . ".jpg")
+                                            "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=$no&type=g")
                                     );
                                 }
                             }
@@ -247,7 +247,7 @@ foreach ($line->getEvent() as $event) {
                             exit();
 
                         } else if ($message[1] == "f") {
-                            $link = 'https://ntw-20.com/common/fairy/fairy_';
+                            $link = 'https://www.ntw-20.com/common/fairy/fairy_';
                             $imageList = array();
 
 
@@ -258,10 +258,11 @@ foreach ($line->getEvent() as $event) {
 
                                 array_push($imageList,
                                     array("type" => "image", "originalContentUrl" => $link . $dataList[0]->no . ".jpg",
-                                        "previewImageUrl" => $link . $dataList[0]->no . ".jpg")
+                                        "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=".$dataList[0]->no."&type=f")
                                 );
 
                             }
+
                             $googleAn->sendEvent("LineApi", "line_search_fairy");
                             $line->replyMessage($event, $imageList);
                             exit();
