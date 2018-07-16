@@ -109,7 +109,7 @@
       "text":["長官，需要加餐嗎，我可以煎一點香腸哦。","長官，雖然解決您的困難是我的榮幸，可您要是一直這樣，我就沒法繼續工作了啊。","請不要小看女僕"]
 	},
 	{
-      "role":["ntw-20","炮姐"],
+      "role":"ntw-20",
       "text":["能別站在我身後嗎？！","誰？……什麼啊，是指揮官呀。隨便碰我的話，可是會受傷的哦。"]
 	},
 	{
@@ -384,7 +384,7 @@
 	},
 	{
 	  "role":["不掉","不出"],
-	  "imgUrl":["hqdefault.jpg","201d2a9a52.PNG"]
+	  "imgUrl":["hqdefault.jpg","201d2a9a52.PNG","7e0f86f5bb.JPG"]
 	},
 	{
 	  "role":["想問","剛出"],
@@ -392,7 +392,7 @@
 	},
 	{
 	  "role":["雞鴨","110","FBI"],
-	  "imgUrl":["95f985a.JPG"]
+	  "imgUrl":["95f985a.JPG","Z2Kt8wm.jpg","ORBdwCQ.jpg"]
 	},
 	{
 	  "role":"快跑",
@@ -400,7 +400,27 @@
 	},
 	{
 	  "role":["重建","重造","大造","6264","6664"],
-	  "imgUrl":["ebcc12cf4.JPG","aF0xLZr.jpg","00038.PNG","RjODIBL.jpg","p5jz3Nn.jpg","trbh1871RTGHTR.jpg"]
+	  "imgUrl":["0d9d7cd86b.JPG","03324ac1.JPG","e8b2ec76c2a9f.JPG","ebcc12cf4.JPG","aF0xLZr.jpg","00038.PNG","RjODIBL.jpg","p5jz3Nn.jpg","trbh1871RTGHTR.jpg"]
+	},
+	{
+	  "role":"白學",
+	  "imgUrl":["8f52c4c8.JPG"]
+	},
+	{
+	  "role":["我婆","老婆"],
+	  "imgUrl":["gereger.jpg","08feaa967b.JPG","54ytj.jpg","300px-41.jpg","8821f8ec9e1.JPG"]
+	},
+	{
+	  "role":["砲狙","炮姐","木星炮","木星砲"],
+	  "imgUrl":["e772deff.PNG","52969a3541ad.JPG"]
+	},
+	{
+	  "role":["N卡","A卡","NVIDIA","AMD"],
+	  "imgUrl":["88cdafd060224202.JPG"]
+	},
+	{
+	  "role":"破滅魔劍",
+	  "imgUrl":["6Wb5Uup9xWZq.jpg","1492521936298.jpg"]
 	}
   ]
 }
