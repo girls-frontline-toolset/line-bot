@@ -332,7 +332,7 @@
 	},
 	{
       "role":"萌新",
-      "imgUrl":["S__16883732.jpg","102.jpg","VfFXYSu.jpg","gregrgregre.png","gregererbert.jpg","gregre43trg4.jpg"]
+      "imgUrl":["9150e4e5ly.jpg","S__16883732.jpg","102.jpg","VfFXYSu.jpg","gregrgregre.png","gregererbert.jpg","gregre43trg4.jpg"]
 	},
 	{     
       "role":["奶蓋夫","奶蓋"],
@@ -377,6 +377,30 @@
 	{
 	  "role":["81n","8-1n","6-3n","63n","52n","5-2n"],
 	  "imgUrl":["1104328.jpg","-7Q5-led.jpg"]
+	},
+	{
+	  "role":"是你爸",
+	  "imgUrl":["c34008f2.JPG"]
+	},
+	{
+	  "role":["不掉","不出"],
+	  "imgUrl":["hqdefault.jpg","201d2a9a52.PNG"]
+	},
+	{
+	  "role":["想問","剛出"],
+	  "imgUrl":["14994.jpg","1499483057831.jpg"]
+	},
+	{
+	  "role":["雞鴨","110","FBI"],
+	  "imgUrl":["95f985a.JPG"]
+	},
+	{
+	  "role":"快跑",
+	  "imgUrl":["kN8WWRo.jpg"]
+	},
+	{
+	  "role":["重建","重造","大造","6264","6664"],
+	  "imgUrl":["ebcc12cf4.JPG","aF0xLZr.jpg","00038.PNG","RjODIBL.jpg","p5jz3Nn.jpg","trbh1871RTGHTR.jpg"]
 	}
   ]
 }
