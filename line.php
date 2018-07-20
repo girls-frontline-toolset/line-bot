@@ -11,6 +11,10 @@ foreach ($line->getEvent() as $event) {
             $message = $event['message'];
             switch ($message['type']) {
                 case 'text':
+                    if(substr($message['text'],0,1) == ':'){
+                        exit();
+                    }
+
                     $message = explode(" ", $message['text']);
                     if ($message[0] == "#gl" || $message[0] == "#少前") {
                         switch ($message[1]) {
