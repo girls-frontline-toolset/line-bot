@@ -457,6 +457,10 @@
 	{
 	  "role":"爸",
 	  "imgUrl":["174f5e3b81b56c03.JPG"]
+	},
+	{
+	  "role":["爆死","抽衣服","新skin","採購"],
+	  "imgUrl":["BOMB.png"]
 	}
   ]
 }
