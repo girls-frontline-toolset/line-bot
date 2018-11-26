@@ -9,6 +9,11 @@ foreach ($line->getEvent() as $event) {
     switch ($event['type']) {
         case 'message':
             $message = $event['message'];
+            if($event['source']['userId'] == "Uf2adf5c8534fbc4e5682c2990ada6f3b" && $message['text'] == "大佬你好"){
+                $listArray = array(array("type" => "text", "text" => "大佬你好"));
+                $line->replyMessage($event, $listArray);
+                exit();
+            }
             switch ($message['type']) {
                 case 'text':
                     if(substr($message['text'],0,1) == ':'){
@@ -17,6 +22,11 @@ foreach ($line->getEvent() as $event) {
 
                     $message = explode(" ", $message['text']);
                     if ($message[0] == "#gl" || $message[0] == "#少前") {
+                        if(!isset($message[1])){
+                            $googleAn->sendEvent("LineApi", "line_help");
+                            $line->printHelp($event);
+                            exit();
+                        }
                         switch ($message[1]) {
                             case 'g':
                                 $url = htmlspecialchars_decode("https://www.ntw-20.com/api/inquiry/girl/$message[2]/$message[3]");
@@ -322,7 +332,7 @@ foreach ($line->getEvent() as $event) {
                     //if($message['stickerId'] == "17411365" && $message['packageId'] == "1465208"){
                        // $line->replyMessage($event, array(array("type"=>"sticker","packageId"=>"1465208","stickerId"=>"17411365")));
                     //}
-                    if ($message['stickerId'] == "17411361" && $message['packageId'] == "1465208") {
+                    if ($message['stickerId'] == "17411361" && $message['packageId'] == "1465208" || $message['stickerId'] == "90359500" && $message['packageId'] == "4857276") {
                         $listArray = array(array("type" => "image", "originalContentUrl" => "https://www.ntw-20.com/api/line/img/" . "a4a6cce.jpg",
                             "previewImageUrl" => "https://www.ntw-20.com/api/line/img/" . "a4a6cce.jpg"),array("type" => "text", "text" => "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=64278016"));
                         $googleAn->sendEvent("LineApi", "line_sticker_img");
