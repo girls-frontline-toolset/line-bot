@@ -58,14 +58,19 @@ class lineEvent
         ));
     }
 
-    public function sendImage($event, $imageUrl){
+    public function sendImage($event, $imageUrl ,$previewImageUrl = null){
+
+        if($previewImageUrl == null){
+            $previewImageUrl  = $imageUrl;
+        }
+
         $this->client->replyMessage(array(
             'replyToken' => $event['replyToken'],
             'messages' => array(
                 array(
                     'type' => 'image',
                     "originalContentUrl" => $imageUrl,
-                    "previewImageUrl" => $imageUrl
+                    "previewImageUrl" => $previewImageUrl
                 )
             )
         ));

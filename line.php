@@ -325,6 +325,16 @@ foreach ($line->getEvent() as $event) {
                                 }
                             }
                         }
+
+                        if (!(stripos($event['message']['text'], "真") === FALSE)) {
+                            if(!(stripos($event['message']['text'], "真的") === FALSE)){
+                                exit();
+                            }
+
+                            $str = mb_substr($event['message']['text'], strpos($event['message']['text'],"真"),2,"UTF-8");
+                            $line->sendImage($event, "https://www.ntw-20.com/api/line/ImgCool.php?str=" . rawurlencode($str),"https://www.ntw-20.com/api/line/ImgCool.php?str=" . rawurlencode($str)."&t=s");
+                        }
+
                     }
                     break;
                 case "sticker":
