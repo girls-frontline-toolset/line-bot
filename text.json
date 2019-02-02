@@ -440,7 +440,7 @@
 	},
 	{
 	  "role":["不掉","不出"],
-	  "imgUrl":["hqdefault.jpg","201d2a9a52.PNG","7e0f86f5bb.JPG"]
+	  "imgUrl":["hqdefault.jpg","201d2a9a52.PNG","7e0f86f5bb.JPG","3cf8f3990ff0bc9355abb7b941d97109.JPG"]
 	},
 	{
 	  "role":["想問","剛出"],
@@ -488,7 +488,7 @@
 	},
 	{
 	  "role":["砲狙","炮姐","木星炮","木星砲"],
-	  "imgUrl":["e772deff.PNG","52969a3541ad.JPG"]
+	  "imgUrl":["e772deff.PNG","52969a3541ad.JPG","Gf_login_041.jpg"]
 	},
 	{
 	  "role":["N卡","A卡","NVIDIA","AMD"],
@@ -537,6 +537,14 @@
 	{
 	  "role":"大佬",
 	  "imgUrl":["207571.jpg"]
+	},
+	{
+	  "role":["防禦門","神奇小門"],
+	  "imgUrl":["6471a2d8e18dfa35f96784b1664d8332.JPG","a55065855f8ebe188ff1f8cc5bc162cb.JPG"]
+	},
+	{
+	  "role":"斧王",
+	  "imgUrl":["Gf_login_04_11.jpg"]
 	}
   ]
 }
