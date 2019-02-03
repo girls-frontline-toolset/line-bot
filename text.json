@@ -1,6 +1,15 @@
 {
-  "info": "版本:V1.3\n問題回報及建議:\nhttps://www.ntw-20.com/more/feedback\n網頁版: https://www.ntw-20.com/\n\n作者:從車站用血換了個蘿莉 \n\n禁止用作商業用途",
-  "help": "----教學----\n\n查詢方法\n\n人型製造時間\n#gl g 1 10\n#少前 g 1 10\n\n妖精製造時間\n#gl f 1 10\n#少前 f 5 30\n\n裝備製造時間\n#gl d 52\n#少前 d 52\n\n圖片找尋(隨機)\n#少前 i\n#gl i\n\n圖片找尋(角色)\n#少前 i idw\n#gl i idw\n\n----關於---\n#gl info\n#少前 info\n\n----網頁---\nhttps://www.ntw-20.com/bot/line",
+  "info": "版本:V1.4\n問題回報及建議:\nhttps://www.ntw-20.com/more/feedback\n網頁版: https://www.ntw-20.com/\nGithub: https://github.com/girls-frontline-toolset/line-bot\n\n作者:從車站用血換了個蘿莉",
+  "ver":"V1.4",
+	"help": [{"title":"人形製造時間查詢","code":["#少前 g <小時> <分鐘>","#gl g <小時> <分鐘>"],"example":["#gl g 1 10"],"high":"* 只有分鐘的話 請在小時中打上0!"},
+		{"title":"妖精製造時間查詢","code":["#少前 f <小時> <分鐘>","#gl f <小時> <分鐘>"],"example":["#gl f 5 30"],"high":""},
+		{"title":"裝備製造時間查詢","code":["#少前 d <分鐘>","#gl d <分鐘>"],"example":["#gl d 52"],"high":""},
+		{"title":"圖片找尋(隨機)","code":["#少前 i","#gl i"],"example":["#gl i"],"high":""},
+		{"title":"圖片找尋(角色)","code":["#少前 i <角色名>","#gl i <角色名>"],"example":["#gl i idw"],"high":""},
+		{"title":"指定梗圖顯示","code":["<關鍵字> -img:<位置號碼>"],"example":["聖造 -img:3"],"high":"梗圖表: https://www.ntw-20.com/bot/line/img"},
+		{"title":"教學查看:","code":["#少前 help","#gl help"],"example":["#gl help"],"high":""},
+		{"title":"關於:","code":["#少前 info","#gl info"],"example":["#gl info"],"high":""}
+	],
   "join": " ----bot---- \n 你好!!\n 這是同好寫的line bot\n 查看教學:\n 打上 #少前 或是 #gl \n 如有問題可以請點下面的連接 \n 找開發者 \nhttps://www.ntw-20.com/more/about\n\n禁止用作商業用途",
   "role": [
     {

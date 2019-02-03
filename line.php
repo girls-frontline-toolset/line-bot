@@ -24,7 +24,7 @@ foreach ($line->getEvent() as $event) {
                     if ($message[0] == "#gl" || $message[0] == "#少前") {
                         if(!isset($message[1])){
                             $googleAn->sendEvent("LineApi", "line_help");
-                            $line->printHelp($event);
+                            $line->printHelpAction($event);
                             exit();
                         }
                         switch ($message[1]) {
@@ -41,7 +41,7 @@ foreach ($line->getEvent() as $event) {
 
                                 if ($message[2] == null || $message[3] == null) {
                                     $googleAn->sendEvent("LineApi", "line_g_time_error");
-                                    $line->printHelp($event);
+                                    $line->printHelpAction($event);
                                     exit();
                                 }
 
@@ -59,7 +59,7 @@ foreach ($line->getEvent() as $event) {
 
                                 if ($message[2] == null || $message[3] == null) {
                                     $googleAn->sendEvent("LineApi", "line_f_time_error");
-                                    $line->printHelp($event);
+                                    $line->printHelpAction($event);
                                     exit();
                                 }
 
@@ -125,7 +125,7 @@ foreach ($line->getEvent() as $event) {
 
                                 if ($message[2] == null) {
                                     $googleAn->sendEvent("LineApi", "line_d_time_error");
-                                    $line->printHelp($event);
+                                    $line->printHelpAction($event);
                                     exit();
                                 }
                                 break;
@@ -195,17 +195,20 @@ foreach ($line->getEvent() as $event) {
                                 $line->printInfo($event);
                                 exit();
                                 break;
-
+                            case 'help':
+                                $googleAn->sendEvent("LineApi", "help");
+                                $line->printHelp($event);
+                                exit();
                             default:
                                 $googleAn->sendEvent("LineApi", "line_help");
-                                $line->printHelp($event);
+                                $line->printHelpAction($event);
                                 exit();
                                 break;
                         }
 
                         if (!isset($dataJson->status)) {
                             $googleAn->sendEvent("LineApi", "line_help");
-                            $line->printHelp($event);
+                            $line->printHelpAction($event);
                             exit();
                         }
 
@@ -306,7 +309,18 @@ foreach ($line->getEvent() as $event) {
                                     if (!(stripos($event['message']['text'], $roleName) === FALSE)) {
                                         if (isset($role->imgUrl)) {
                                             $googleAn->sendEvent("LineApi", "line_ch_dialogue");
-                                            $line->sendImage($event, "https://www.ntw-20.com/api/line/img/" . $role->imgUrl[rand(0, count($role->imgUrl) - 1)]);
+
+                                            $imgIndex = rand(0, count($role->imgUrl) - 1);
+                                            preg_match('/-img:[\d]+/', $event['message']['text'], $matches, PREG_OFFSET_CAPTURE);
+
+                                            if(count($matches) > 0){
+                                                $imgIndex  =  intval(str_replace("-img:","",$matches[0][0])) - 1;
+                                                if ($imgIndex >= count($role->imgUrl) || $imgIndex < 0 ){
+                                                    $imgIndex = count($role->imgUrl) - 1 ;
+                                                }
+                                            }
+
+                                            $line->sendImage($event, "https://www.ntw-20.com/api/line/img/" . $role->imgUrl[$imgIndex]);
                                         } else {
                                             $googleAn->sendEvent("LineApi", "line_ch_dialogue");
                                             $line->sendText($event, $role->text[rand(0, count($role->text) - 1)]);
@@ -338,10 +352,6 @@ foreach ($line->getEvent() as $event) {
                     }
                     break;
                 case "sticker":
-                    //$line->sendText($event, json_encode($message));
-                    //if($message['stickerId'] == "17411365" && $message['packageId'] == "1465208"){
-                       // $line->replyMessage($event, array(array("type"=>"sticker","packageId"=>"1465208","stickerId"=>"17411365")));
-                    //}
                     if ($message['stickerId'] == "17411361" && $message['packageId'] == "1465208" || $message['stickerId'] == "90359500" && $message['packageId'] == "4857276") {
                         $listArray = array(array("type" => "image", "originalContentUrl" => "https://www.ntw-20.com/api/line/img/" . "a4a6cce.jpg",
                             "previewImageUrl" => "https://www.ntw-20.com/api/line/img/" . "a4a6cce.jpg"),array("type" => "text", "text" => "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=64278016"));
