@@ -12,6 +12,13 @@
 [梗圖表](https://www.ntw-20.com/bot/line/img)
 
 
-## 3.問題回報及建議
+## 3. TODO
+- [ ] 模擬造槍
+- [ ] 模擬重造-槍
+- [ ] 模擬造裝
+- [ ] 模擬重造-裝
+- [ ] 測試方法
+
+## 4. 問題回報及建議
 
 https://www.ntw-20.com/more/feedback
