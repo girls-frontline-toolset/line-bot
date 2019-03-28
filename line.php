@@ -4,6 +4,47 @@ include_once('GoogleAnalytics.php');
 $googleAn = new GoogleAnalytics();
 
 $line = new lineEvent();
+/**
+ * @param $event
+ * @return mixed
+ */
+function getID($event)
+{
+    switch ($event['source']['type']) {
+        case "user":
+            $id = $event['source']['userId'];
+            break;
+        case "group":
+            $id = $event['source']['groupId'];
+            break;
+        case "room":
+            $id = $event['source']['roomId'];
+            break;
+        default:
+            exit();
+    }
+    return $id;
+}
+
+/**
+ * @param $event
+ * @return string
+ */
+function getLangSetting($event)
+{
+    $id = getID($event);
+
+    include_once("DB.php");
+    $DB = new DB();
+
+    $rs = $DB->getLineBotLang($id);
+    $lang = "tw";
+    if ($rs !== null) {
+        $lang = $rs[0]['lang'];
+    }
+    return $lang;
+}
+
 foreach ($line->getEvent() as $event) {
 
     switch ($event['type']) {
@@ -190,6 +231,58 @@ foreach ($line->getEvent() as $event) {
                                 exit();
 
                                 break;
+
+                            case 'set':
+                                if (!isset($message[1]) || !isset($message[2]) || !isset($event['source']['type'])) {
+                                    $googleAn->sendEvent("LineApi", "line_help");
+                                    $line->printHelpAction($event);
+                                    exit();
+                                }
+
+                                $id = getID($event);
+
+                                include_once("DB.php");
+                                if ($message[2] == 'lang') {
+                                    switch ($message[3]) {
+                                        case "en";
+                                        case "ja";
+                                        case "tw";
+                                        case "cn";
+                                            $DB = new DB();
+
+                                            $rs = $DB->getLineBotLang($id);
+
+                                            if ($rs == null) {
+                                                $DB->insertLineBotLang($id, $message[3]);
+                                            } else {
+                                                $DB->updateLineBotLang($id, $message[3]);
+                                            }
+                                            $listArray = array(array("type" => "text", "text" => "完成"));
+                                            $line->replyMessage($event, $listArray);
+                                            exit();
+                                            break;
+                                        default:
+                                            $listArray = array(array("type" => "text", "text" => "en, ja, cn, tw"));
+                                            $line->replyMessage($event, $listArray);
+                                            exit();
+                                    }
+                                }
+
+                                break;
+                            case 'get':
+                                if(!isset($message[1]) || !isset($message[2]) || !isset($event['source']['type']) || $message[2] != 'lang'){
+                                    $googleAn->sendEvent("LineApi", "line_help");
+                                    $line->printHelpAction($event);
+                                    exit();
+                                }
+
+                                $lang = getLangSetting($event);
+
+                                $listArray = array(array("type" => "text", "text" => $lang));
+                                $line->replyMessage($event, $listArray);
+                                exit();
+
+                                break;
                             case 'info':
                                 $googleAn->sendEvent("LineApi", "line_info");
                                 $line->printInfo($event);
@@ -219,7 +312,10 @@ foreach ($line->getEvent() as $event) {
                         }
 
                         if ($message[1] == "g") {
-                            $link = 'https://www.ntw-20.com/common/girl/girl_';
+                            $lang = getLangSetting($event);
+                            $langPath  = ($lang == 'tw')? '': $lang  . "/";
+
+                            $link = 'https://www.ntw-20.com/common/girl/'.  $langPath .'girl_';
                             $imageList = array(array(), array());
 
                             foreach ($dataJson->data as $dataList) {
@@ -239,8 +335,8 @@ foreach ($line->getEvent() as $event) {
                             if (count($imageList[0]) != 0) {
                                 foreach ($imageList[0] as $no) {
                                     array_push($listArray,
-                                        array("type" => "image", "originalContentUrl" => $link . $no . ".jpg",
-                                            "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=$no&type=g")
+                                        array("type" => "image", "originalContentUrl" => $link. $no . ".jpg",
+                                            "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=$no&type=g&lang=$lang")
                                     );
                                 }
                             }
