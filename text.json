@@ -8,6 +8,8 @@
 		{"title": "圖片找尋(隨機)", "code": ["#少前 i", "#gl i"], "example": ["#gl i"], "high": ""},
 		{"title": "圖片找尋(角色)", "code": ["#少前 i <角色名>", "#gl i <角色名>"], "example": ["#gl i idw"], "high": ""},
 		{"title": "指定梗圖顯示", "code": ["<關鍵字> -img:<位置號碼>"], "example": ["聖造 -img:3"], "high": "梗圖表: https://www.ntw-20.com/bot/line/img"},
+		{"title": "設定語言", "code": ["#少前 set lang en|ja|cn|tw","#gl set lang en|ja|cn|tw"], "example": ["#gl set lang ja"], "high": ""},
+		{"title": "查看語言", "code": ["#少前 get lang","#gl get lang"], "example": ["#gl get lang"], "high": ""},
 		{"title": "教學查看:", "code": ["#少前 help", "#gl help"], "example": ["#gl help"], "high": ""},
 		{"title": "關於:", "code": ["#少前 info", "#gl info"], "example": ["#gl info"], "high": ""}
 	],
