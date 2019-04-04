@@ -513,7 +513,7 @@
 		},
 		{
 			"role": "白學",
-			"imgUrl": ["8f52c4c8.JPG"]
+			"imgUrl": ["8f52c4c8.JPG","-bqqbQ5-5l0bZfT3cSgo-af.jpg"]
 		},
 		{
 			"role": "prpr",
@@ -590,6 +590,14 @@
 		{
 			"role": ".....",
 			"imgUrl": ["95197.jpg"]
+		},
+		{
+			"role": ["少男前線","少男甲線"],
+			"imgUrl": ["UMP45_boy.jpg"]
+		},
+		{
+			"role": ["地獄玄關","All in"],
+			"imgUrl": ["ca92b11286b2ccf1721a13461f77b3d8.JPG"]
 		}
 	]
 }
