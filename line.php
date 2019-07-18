@@ -332,11 +332,17 @@ foreach ($line->getEvent() as $event) {
 
                             $listArray = array();
 
+                            if($lang == "tw"){
+                                $lang = "";
+                            }else{
+                                $lang .= "/";
+                            }
+
                             if (count($imageList[0]) != 0) {
                                 foreach ($imageList[0] as $no) {
                                     array_push($listArray,
                                         array("type" => "image", "originalContentUrl" => $link. $no . ".jpg",
-                                            "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=$no&type=g&lang=$lang")
+                                            "previewImageUrl" => "https://img.ump40.com/gf/common/s/girl/" . $lang. "girl_$no.jpg")
                                     );
                                 }
                             }
