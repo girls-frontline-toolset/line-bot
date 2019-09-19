@@ -454,9 +454,15 @@ foreach ($line->getEvent() as $event) {
                     }
                     break;
                 case "sticker":
+
                     if ($message['stickerId'] == "17411361" && $message['packageId'] == "1465208" || $message['stickerId'] == "90359500" && $message['packageId'] == "4857276") {
                         $listArray = array(array("type" => "image", "originalContentUrl" => "https://www.ntw-20.com/api/line/img/" . "a4a6cce.jpg",
                             "previewImageUrl" => "https://www.ntw-20.com/api/line/img/" . "a4a6cce.jpg"),array("type" => "text", "text" => "https://www.pixiv.net/member_illust.php?mode=medium&illust_id=64278016"));
+                        $googleAn->sendEvent("LineApi", "line_sticker_img");
+                        $line->replyMessage($event, $listArray);
+                    }else if($message['stickerId'] == "196172237" && $message['packageId'] ="7958108"){
+                        $listArray = array(array("type" => "image", "originalContentUrl" => "https://www.ntw-20.com/api/line/img/" . "FB_IMG_1568855252318.jpg",
+                            "previewImageUrl" => "https://www.ntw-20.com/api/line/img/" . "FB_IMG_1568855252318.jpg"));
                         $googleAn->sendEvent("LineApi", "line_sticker_img");
                         $line->replyMessage($event, $listArray);
                     }
