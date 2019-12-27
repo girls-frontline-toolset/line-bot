@@ -105,4 +105,57 @@ class lineEvent
         ));
     }
 
+    public function replyCarousel($event,$carouselList){
+        $list = [
+            "type" => "flex",
+            "altText" => $carouselList->altText,
+            "contents" => ["type" => "carousel", "contents" => []]
+        ];
+
+
+        foreach ($carouselList->CarouselBeanList as $bean){
+
+            $color = "#a0c11b";
+
+            if($bean->isHeavy){
+                $color = "#ed7b4a";
+            }
+
+            $beanArray = [ "type" => "bubble",
+                "direction" => "ltr",
+                "header" => [
+                    "type" => "box",
+                    "layout" => "vertical",
+                    "flex" => 0,
+                    "contents" => [
+                        [
+                            "type" => "image",
+                            "url" => $bean->imageUrl,
+                            "size" => "full",
+                            "aspectRatio" => "9:16",
+                            "aspectMode" => "cover",
+                            "backgroundColor" => $color,
+                            "action" => [
+                                "type" => "uri",
+                                "uri" => $bean->url
+                            ]
+                        ]
+                    ]
+                ],
+                "styles" => [
+                    "header" => [
+                        "backgroundColor" => $color
+                    ]
+                ]
+            ];
+
+            array_push($list["contents"]["contents"],$beanArray);
+        }
+
+
+        $this->replyMessage($event,array($list));
+        exit();
+
+    }
+
 }

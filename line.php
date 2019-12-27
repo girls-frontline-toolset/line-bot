@@ -1,6 +1,7 @@
 <?php
 include_once('lineEvent.php');
 include_once('GoogleAnalytics.php');
+include_once('CarouselList.php');
 $googleAn = new GoogleAnalytics();
 
 $line = new lineEvent();
@@ -315,7 +316,7 @@ foreach ($line->getEvent() as $event) {
                             $lang = getLangSetting($event);
                             $langPath  = ($lang == 'tw')? '': $lang  . "/";
 
-                            $link = 'https://www.ntw-20.com/common/girl/'.  $langPath .'girl_';
+                            $url = 'https://www.ntw-20.com/time/girl/' . $message[2] .'/' . $message[3] .'/?utm_source=line&utm_medium=message&utm_campaign=share';
                             $imageList = array(array(), array());
 
                             foreach ($dataJson->data as $dataList) {
@@ -330,7 +331,7 @@ foreach ($line->getEvent() as $event) {
 
                             }
 
-                            $listArray = array();
+                            $carouselList = new CarouselList("人型製造時間查詢 ".$message[2].":" . $message[3]);
 
                             if($lang == "tw"){
                                 $lang = "";
@@ -340,50 +341,34 @@ foreach ($line->getEvent() as $event) {
 
                             if (count($imageList[0]) != 0) {
                                 foreach ($imageList[0] as $no) {
-                                    array_push($listArray,
-                                        array("type" => "image", "originalContentUrl" => $link. $no . ".jpg",
-                                            "previewImageUrl" => "https://img.ump40.com/gf/common/s/girl/" . $lang. "girl_$no.jpg")
-                                    );
+                                    $carouselList->AddCarousel("https://img.ump40.com/gf/common/girl/" . $lang. "girl_$no.jpg",false,$url);
                                 }
                             }
 
                             if (count($imageList[1]) != 0) {
-                                array_push($listArray, array(
-                                    'type' => 'text',
-                                    'text' => "===大建==="
-                                ));
-
                                 foreach ($imageList[1] as $no) {
-                                    array_push($listArray,
-                                        array("type" => "image", "originalContentUrl" => $link . $no . ".jpg",
-                                            "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=$no&type=g")
-                                    );
+                                    $carouselList->AddCarousel("https://img.ump40.com/gf/common/girl/" . $lang. "girl_$no.jpg",true,$url);
                                 }
                             }
 
                             $googleAn->sendEvent("LineApi", "line_search_girl");
-                            $line->replyMessage($event, $listArray);
+                            $line->replyCarousel($event,$carouselList);
                             exit();
 
                         } else if ($message[1] == "f") {
-                            $link = 'https://www.ntw-20.com/common/fairy/fairy_';
+                            $link = 'https://img.ump40.com/gf/common/fairy/fairy_';
+                            $url = 'https://www.ntw-20.com/time/fairy/' . $message[2] .'/' . $message[3] .'/?utm_source=line&utm_medium=message&utm_campaign=share';
                             $imageList = array();
 
+                            $carouselList = new CarouselList("妖精製造時間查詢 ".$message[2].":" . $message[3]);
 
                             foreach ($dataJson->data as $dataList) {
-                                if ($dataList == "") {
-                                    continue;
-                                }
-
-                                array_push($imageList,
-                                    array("type" => "image", "originalContentUrl" => $link . $dataList[0]->no . ".jpg",
-                                        "previewImageUrl" => "https://www.ntw-20.com/api/preview.php?id=".$dataList[0]->no."&type=f")
-                                );
-
+                                if ($dataList == "") {continue;}
+                                $carouselList->AddCarousel( $link . $dataList[0]->no . ".jpg",true,$url);
                             }
 
                             $googleAn->sendEvent("LineApi", "line_search_fairy");
-                            $line->replyMessage($event, $imageList);
+                            $line->replyCarousel($event,$carouselList);
                             exit();
                         } else if ($message[1] == "d") {
                             $link = 'https://www.ntw-20.com/api/inquiry/deviceImg/';
