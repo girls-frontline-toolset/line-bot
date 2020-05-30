@@ -46,6 +46,15 @@ function getLangSetting($event)
     return $lang;
 }
 
+$arrContextOptions=array(
+    "ssl"=>array(
+        "verify_peer"=>false,
+        "verify_peer_name"=>false,
+    ),
+);
+
+
+
 foreach ($line->getEvent() as $event) {
 
     switch ($event['type']) {
@@ -72,8 +81,8 @@ foreach ($line->getEvent() as $event) {
                         switch ($message[1]) {
                             case 'g':
                                 $url = htmlspecialchars_decode("https://www.ntw-20.com/api/inquiry/girl/$message[2]/$message[3]");
-                                $dataGet = file_get_contents($url);
-                                $dataJson = json_decode(file_get_contents($url));
+                                $dataGet = file_get_contents($url, false, stream_context_create($arrContextOptions));
+                                $dataJson = json_decode(file_get_contents($url, false, stream_context_create($arrContextOptions)));
                                 if (!$dataGet) {
                                     $listArray = array(array("type" => "text", "text" => "人型製造時間\n#gl g 1 10\n#少前 g 1 10"));
                                     $line->replyMessage($event, $listArray);
@@ -90,7 +99,7 @@ foreach ($line->getEvent() as $event) {
                                 break;
                             case 'f':
                                 $url = htmlspecialchars_decode("https://www.ntw-20.com/api/inquiry/fairy/$message[2]/$message[3]");
-                                $dataGet = file_get_contents($url);
+                                $dataGet = file_get_contents($url, false, stream_context_create($arrContextOptions));
 
                                 if (!$dataGet) {
                                     $listArray = array(array("type" => "text", "text" => "妖精製造時間\n#gl f 1 10\n#少前 f 5 30"));
@@ -108,7 +117,7 @@ foreach ($line->getEvent() as $event) {
                                 break;
                             case 'nl':
                                 $googleAn->sendEvent("LineApi", "line_name_list");
-                                $Glist = json_decode(file_get_contents("https://www.ntw-20.com/api/inquiry/allGirl"));
+                                $Glist = json_decode(file_get_contents("https://www.ntw-20.com/api/inquiry/allGirl" , false, stream_context_create($arrContextOptions)));
                                 $nameList = "";
 
                                 if ($message[2] !== null) {
@@ -157,7 +166,7 @@ foreach ($line->getEvent() as $event) {
                                 break;
                             case 'd':
                                 $url = htmlspecialchars_decode("https://www.ntw-20.com/api/inquiry/device/$message[2]");
-                                $dataGet = file_get_contents($url);
+                                $dataGet = file_get_contents($url, false, stream_context_create($arrContextOptions));
                                 if (!$dataGet) {
                                     $listArray = array(array("type" => "text", "text" => "裝備製造時間\n#gl d 52\n#少前 d 52"));
                                     $line->replyMessage($event, $listArray);
@@ -185,14 +194,17 @@ foreach ($line->getEvent() as $event) {
                                             'method' => 'POST',
                                             'header' => 'Content-type: application/x-www-form-urlencoded',
                                             'content' => $postdata
-                                        )
-                                    );
+                                        ),
+                                        "ssl"=>array(
+                                            "verify_peer"=>false,
+                                            "verify_peer_name"=>false,
+                                        ));
                                     $context = stream_context_create($opts);
                                     $rs = json_decode(file_get_contents($link, false, $context));
                                     $googleAn->sendEvent("LineApi", "line_image_$message[2]");
                                 } else {
                                     $googleAn->sendEvent("LineApi", "line_image_random");
-                                    $rs = json_decode(file_get_contents($link, false));
+                                    $rs = json_decode(file_get_contents($link, false, stream_context_create($arrContextOptions)));
                                 }
 
                                 if ($rs->status == "success") {
@@ -204,7 +216,7 @@ foreach ($line->getEvent() as $event) {
                                     }
 
                                 } else {
-                                    $Glist = json_decode(file_get_contents("https://www.ntw-20.com/api/inquiry/allGirl"));
+                                    $Glist = json_decode(file_get_contents("https://www.ntw-20.com/api/inquiry/allGirl", false, stream_context_create($arrContextOptions)));
                                     $nameList = "";
 
                                     foreach ($Glist->data as $list) {
